@@ -1,0 +1,46 @@
+[
+  {
+    "id": "t1",
+    "title": "Design database schema",
+    "description": "Create the initial database schema for the application",
+    "status": "done",
+    "priority": "high",
+    "assigneeId": "u1",
+    "dueDate": "2025-06-01T00:00:00.000Z",
+    "createdAt": "2025-05-15T00:00:00.000Z",
+    "updatedAt": "2025-05-30T00:00:00.000Z"
+  },
+  {
+    "id": "t2",
+    "title": "Implement user authentication",
+    "description": "Add login and registration functionality",
+    "status": "in_progress",
+    "priority": "high",
+    "assigneeId": "u1",
+    "dueDate": "2025-07-01T00:00:00.000Z",
+    "createdAt": "2025-06-01T00:00:00.000Z",
+    "updatedAt": "2025-06-15T00:00:00.000Z"
+  },
+  {
+    "id": "t3",
+    "title": "Write API documentation",
+    "description": "Document all REST API endpoints for developers",
+    "status": "todo",
+    "priority": "medium",
+    "assigneeId": "u2",
+    "dueDate": "2025-07-15T00:00:00.000Z",
+    "createdAt": "2025-06-10T00:00:00.000Z",
+    "updatedAt": "2025-06-10T00:00:00.000Z"
+  },
+  {
+    "id": "t4",
+    "title": "Fix pagination bug",
+    "description": "The pagination component is not displaying the correct page count",
+    "status": "todo",
+    "priority": "low",
+    "assigneeId": "u4",
+    "dueDate": "2025-07-30T00:00:00.000Z",
+    "createdAt": "2025-06-12T00:00:00.000Z",
+    "updatedAt": "2025-06-12T00:00:00.000Z"
+  }
+]

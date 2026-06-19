@@ -1,0 +1,23 @@
+[
+  {
+    "id": "c1",
+    "name": "Electronics",
+    "description": "Electronic devices and accessories",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "c2",
+    "name": "Books",
+    "description": "Physical and digital books",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "c3",
+    "name": "Clothing",
+    "description": "Apparel and fashion items",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]

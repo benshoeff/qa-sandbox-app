@@ -1,0 +1,47 @@
+[
+  {
+    "id": "p1",
+    "name": "Create Users",
+    "resource": "users",
+    "action": "create",
+    "description": "Ability to create new users",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "p2",
+    "name": "Edit Users",
+    "resource": "users",
+    "action": "update",
+    "description": "Ability to edit existing users",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "p3",
+    "name": "Delete Users",
+    "resource": "users",
+    "action": "delete",
+    "description": "Ability to delete users",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "p4",
+    "name": "View Reports",
+    "resource": "reports",
+    "action": "read",
+    "description": "Ability to view system reports",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "p5",
+    "name": "Manage Roles",
+    "resource": "roles",
+    "action": "manage",
+    "description": "Full management of roles and permissions",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]

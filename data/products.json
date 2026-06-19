@@ -1,0 +1,42 @@
+[
+  {
+    "id": "pr1",
+    "name": "Wireless Headphones",
+    "description": "High-quality Bluetooth headphones with noise cancellation",
+    "price": 149.99,
+    "categoryId": "c1",
+    "status": "active",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "pr2",
+    "name": "Smart Watch",
+    "description": "Fitness tracker with heart rate monitoring",
+    "price": 249.99,
+    "categoryId": "c1",
+    "status": "active",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "pr3",
+    "name": "JavaScript: The Good Parts",
+    "description": "A deep dive into JavaScript fundamentals",
+    "price": 29.99,
+    "categoryId": "c2",
+    "status": "active",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "pr4",
+    "name": "Cotton T-Shirt",
+    "description": "Comfortable 100% cotton t-shirt",
+    "price": 19.99,
+    "categoryId": "c3",
+    "status": "inactive",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]

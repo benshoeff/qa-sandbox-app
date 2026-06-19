@@ -1,0 +1,23 @@
+[
+  {
+    "id": "r1",
+    "name": "Admin",
+    "description": "Full system access with all permissions",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "r2",
+    "name": "Editor",
+    "description": "Can create and edit content",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "r3",
+    "name": "Viewer",
+    "description": "Read-only access to content",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "u1",
+    "name": "Alice Cohen",
+    "email": "alice@example.com",
+    "roleId": "r1",
+    "status": "active",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "u2",
+    "name": "Bob Levy",
+    "email": "bob@example.com",
+    "roleId": "r2",
+    "status": "active",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "u3",
+    "name": "Carol Mizrahi",
+    "email": "carol@example.com",
+    "roleId": "r3",
+    "status": "inactive",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "u4",
+    "name": "David Katz",
+    "email": "david@example.com",
+    "roleId": "r2",
+    "status": "active",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]

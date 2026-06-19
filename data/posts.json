@@ -1,0 +1,35 @@
+[
+  {
+    "id": "po1",
+    "title": "Getting Started with Next.js",
+    "content": "Next.js is a React framework that enables server-side rendering and static site generation. In this post, we'll explore the basics of setting up a Next.js project and creating your first pages.",
+    "authorId": "u1",
+    "categoryId": "c2",
+    "status": "published",
+    "publishedAt": "2025-06-01T00:00:00.000Z",
+    "createdAt": "2025-05-25T00:00:00.000Z",
+    "updatedAt": "2025-06-01T00:00:00.000Z"
+  },
+  {
+    "id": "po2",
+    "title": "Understanding REST APIs",
+    "content": "REST APIs are the backbone of modern web applications. Learn about HTTP methods, status codes, and best practices for designing RESTful endpoints.",
+    "authorId": "u2",
+    "categoryId": "c2",
+    "status": "published",
+    "publishedAt": "2025-06-10T00:00:00.000Z",
+    "createdAt": "2025-06-05T00:00:00.000Z",
+    "updatedAt": "2025-06-10T00:00:00.000Z"
+  },
+  {
+    "id": "po3",
+    "title": "Draft: Upcoming Features",
+    "content": "This is a draft post about upcoming features in the platform.",
+    "authorId": "u1",
+    "categoryId": "c2",
+    "status": "draft",
+    "publishedAt": null,
+    "createdAt": "2025-06-15T00:00:00.000Z",
+    "updatedAt": "2025-06-15T00:00:00.000Z"
+  }
+]
