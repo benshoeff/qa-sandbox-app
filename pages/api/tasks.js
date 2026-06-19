@@ -1,21 +1,21 @@
 import { getAll, getById, create, update, remove } from '@/lib/db'
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const { method, query: { id } } = req
 
   switch (method) {
     case 'GET':
       if (id) {
-        const item = getById('tasks', id)
+        const item = await getById('tasks', id)
         if (!item) return res.status(404).json({ error: 'Task not found' })
         return res.status(200).json(item)
       }
-      return res.status(200).json(getAll('tasks'))
+      return res.status(200).json(await getAll('tasks'))
 
     case 'POST':
       const { title, description, status, priority, assigneeId, dueDate } = req.body
       if (!title) return res.status(400).json({ error: 'Title is required' })
-      const created = create('tasks', {
+      const created = await create('tasks', {
         title,
         description: description || '',
         status: status || 'todo',
@@ -27,13 +27,13 @@ export default function handler(req, res) {
 
     case 'PUT':
       if (!id) return res.status(400).json({ error: 'id is required' })
-      const updated = update('tasks', id, req.body)
+      const updated = await update('tasks', id, req.body)
       if (!updated) return res.status(404).json({ error: 'Task not found' })
       return res.status(200).json(updated)
 
     case 'DELETE':
       if (!id) return res.status(400).json({ error: 'id is required' })
-      const deleted = remove('tasks', id)
+      const deleted = await remove('tasks', id)
       if (!deleted) return res.status(404).json({ error: 'Task not found' })
       return res.status(200).json({ message: 'Task deleted successfully' })
 
