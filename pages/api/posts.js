@@ -1,23 +1,23 @@
 import { getAll, getById, create, update, remove } from '@/lib/db'
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const { method, query: { id } } = req
 
   switch (method) {
     case 'GET':
       if (id) {
-        const item = getById('posts', id)
+        const item = await getById('posts', id)
         if (!item) return res.status(404).json({ error: 'Post not found' })
         return res.status(200).json(item)
       }
-      return res.status(200).json(getAll('posts'))
+      return res.status(200).json(await getAll('posts'))
 
     case 'POST':
       const { title, content, authorId, categoryId, status } = req.body
       if (!title || !content) {
         return res.status(400).json({ error: 'Title and content are required' })
       }
-      const created = create('posts', {
+      const created = await create('posts', {
         title,
         content,
         authorId: authorId || null,
@@ -32,13 +32,13 @@ export default function handler(req, res) {
       if (req.body.status === 'published' && !req.body.publishedAt) {
         req.body.publishedAt = new Date().toISOString()
       }
-      const updated = update('posts', id, req.body)
+      const updated = await update('posts', id, req.body)
       if (!updated) return res.status(404).json({ error: 'Post not found' })
       return res.status(200).json(updated)
 
     case 'DELETE':
       if (!id) return res.status(400).json({ error: 'id is required' })
-      const deleted = remove('posts', id)
+      const deleted = await remove('posts', id)
       if (!deleted) return res.status(404).json({ error: 'Post not found' })
       return res.status(200).json({ message: 'Post deleted successfully' })
 

@@ -1,16 +1,16 @@
 import { getAll, getById, create, update, remove } from '@/lib/db'
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const { method, query: { id } } = req
 
   switch (method) {
     case 'GET':
       if (id) {
-        const item = getById('orders', id)
+        const item = await getById('orders', id)
         if (!item) return res.status(404).json({ error: 'Order not found' })
         return res.status(200).json(item)
       }
-      return res.status(200).json(getAll('orders'))
+      return res.status(200).json(await getAll('orders'))
 
     case 'POST':
       const { customerName, email, items, totalAmount, status } = req.body
@@ -20,7 +20,7 @@ export default function handler(req, res) {
       const calculatedTotal = items
         ? items.reduce((sum, item) => sum + item.price * item.quantity, 0)
         : totalAmount || 0
-      const created = create('orders', {
+      const created = await create('orders', {
         customerName,
         email,
         items: items || [],
@@ -36,13 +36,13 @@ export default function handler(req, res) {
           (sum, item) => sum + item.price * item.quantity, 0
         )
       }
-      const updated = update('orders', id, req.body)
+      const updated = await update('orders', id, req.body)
       if (!updated) return res.status(404).json({ error: 'Order not found' })
       return res.status(200).json(updated)
 
     case 'DELETE':
       if (!id) return res.status(400).json({ error: 'id is required' })
-      const deleted = remove('orders', id)
+      const deleted = await remove('orders', id)
       if (!deleted) return res.status(404).json({ error: 'Order not found' })
       return res.status(200).json({ message: 'Order deleted successfully' })
 
