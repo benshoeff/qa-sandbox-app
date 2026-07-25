@@ -2,11 +2,15 @@ import { useState, useEffect } from 'react'
 import Layout from '@/components/Layout'
 import DataTable from '@/components/DataTable'
 import FormModal from '@/components/FormModal'
+import Toast from '@/components/Toast'
+import ConfirmModal from '@/components/ConfirmModal'
 
 export default function CategoriesPage() {
   const [items, setItems] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
   const [editingItem, setEditingItem] = useState(null)
+  const [successMessage, setSuccessMessage] = useState('')
+  const [deleteConfirm, setDeleteConfirm] = useState(null)
 
   const fetchItems = async () => {
     const res = await fetch('/api/categories')
@@ -21,6 +25,7 @@ export default function CategoriesPage() {
     await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
     setModalOpen(false)
     setEditingItem(null)
+    setSuccessMessage(editingItem ? 'Category updated successfully' : 'Category created successfully')
     fetchItems()
   }
 
@@ -29,9 +34,14 @@ export default function CategoriesPage() {
     setModalOpen(true)
   }
 
-  const handleDelete = async (item) => {
-    if (!confirm('Delete this category?')) return
-    await fetch(`/api/categories?id=${item.id}`, { method: 'DELETE' })
+  const handleDelete = (item) => {
+    setDeleteConfirm(item)
+  }
+
+  const handleDeleteConfirm = async () => {
+    await fetch(`/api/categories?id=${deleteConfirm.id}`, { method: 'DELETE' })
+    setDeleteConfirm(null)
+    setSuccessMessage('Category deleted successfully')
     fetchItems()
   }
 
@@ -47,9 +57,17 @@ export default function CategoriesPage() {
 
   return (
     <Layout>
+      <Toast message={successMessage} onClose={() => setSuccessMessage('')} />
+      <ConfirmModal
+        open={!!deleteConfirm}
+        title="Delete Category"
+        message={`Are you sure you want to delete "${deleteConfirm?.name}"? This action cannot be undone.`}
+        onConfirm={handleDeleteConfirm}
+        onCancel={() => setDeleteConfirm(null)}
+      />
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Categories</h1>
+          <h1 data-testid="categories-title" className="text-2xl font-bold text-gray-900">Categories</h1>
           <p className="text-sm text-gray-500 mt-1">Organize items into categories</p>
         </div>
         <button className="btn-primary" onClick={() => { setEditingItem(null); setModalOpen(true) }}>

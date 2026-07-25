@@ -2,11 +2,15 @@ import { useState, useEffect } from 'react'
 import Layout from '@/components/Layout'
 import DataTable from '@/components/DataTable'
 import FormModal from '@/components/FormModal'
+import Toast from '@/components/Toast'
+import ConfirmModal from '@/components/ConfirmModal'
 
 export default function OrdersPage() {
   const [items, setItems] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
   const [editingItem, setEditingItem] = useState(null)
+  const [successMessage, setSuccessMessage] = useState('')
+  const [deleteConfirm, setDeleteConfirm] = useState(null)
 
   const fetchItems = async () => {
     const res = await fetch('/api/orders')
@@ -21,6 +25,7 @@ export default function OrdersPage() {
     await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
     setModalOpen(false)
     setEditingItem(null)
+    setSuccessMessage(editingItem ? 'Order updated successfully' : 'Order created successfully')
     fetchItems()
   }
 
@@ -29,9 +34,14 @@ export default function OrdersPage() {
     setModalOpen(true)
   }
 
-  const handleDelete = async (item) => {
-    if (!confirm('Delete this order?')) return
-    await fetch(`/api/orders?id=${item.id}`, { method: 'DELETE' })
+  const handleDelete = (item) => {
+    setDeleteConfirm(item)
+  }
+
+  const handleDeleteConfirm = async () => {
+    await fetch(`/api/orders?id=${deleteConfirm.id}`, { method: 'DELETE' })
+    setDeleteConfirm(null)
+    setSuccessMessage('Order deleted successfully')
     fetchItems()
   }
 
@@ -80,6 +90,14 @@ export default function OrdersPage() {
 
   return (
     <Layout>
+      <Toast message={successMessage} onClose={() => setSuccessMessage('')} />
+      <ConfirmModal
+        open={!!deleteConfirm}
+        title="Delete Order"
+        message={`Are you sure you want to delete order #${deleteConfirm?.id?.slice(0, 8)}? This action cannot be undone.`}
+        onConfirm={handleDeleteConfirm}
+        onCancel={() => setDeleteConfirm(null)}
+      />
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Orders</h1>

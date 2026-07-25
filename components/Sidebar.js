@@ -96,8 +96,8 @@ export default function Sidebar() {
           Q
         </div>
         <div>
-          <h1 className="text-lg font-bold text-gray-900">QA Sandbox</h1>
-          <p className="text-xs text-gray-500">Testing Platform</p>
+          <h1 data-testid="app-name" className="text-lg font-bold text-gray-900">QA Sandbox</h1>
+          <p data-testid="app-description" className="text-xs text-gray-500">Testing Platform</p>
         </div>
       </div>
 
@@ -106,6 +106,7 @@ export default function Sidebar() {
           const isActive = currentPath === item.href
           return (
             <Link
+              data-testid={`${item.label.toLowerCase()}-sidebar-item`}
               key={item.href}
               href={item.href}
               className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
