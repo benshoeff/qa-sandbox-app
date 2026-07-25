@@ -42,6 +42,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
       case 'select':
         return (
           <select
+            data-testid={`${field.key}-select`}
             className="input"
             value={value}
             onChange={(e) => handleChange(field.key, e.target.value)}
@@ -117,6 +118,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
             onChange={(e) => handleChange(field.key, e.target.value)}
             required={field.required}
             placeholder={field.placeholder}
+            data-testid={`${field.key}-input`}
           />
         )
 
@@ -129,6 +131,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
             onChange={(e) => handleChange(field.key, e.target.value)}
             required={field.required}
             placeholder={field.placeholder}
+            data-testid={`${field.key}-input`}
           />
         )
     }
@@ -141,6 +144,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
           <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
           <button
+            data-testid="close-button"
             onClick={onClose}
             className="p-1 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
           >
@@ -150,7 +154,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="px-6 py-4 space-y-4">
+        <form onSubmit={handleSubmit} noValidate className="px-6 py-4 space-y-4">
           {fields.map((field) => (
             <div key={field.key}>
               <label className="label">
@@ -165,7 +169,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
             <button type="button" className="btn-secondary" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="btn-primary">
+            <button data-testid="submit-button" type="submit" className="btn-primary">
               {initialData ? 'Update' : 'Create'}
             </button>
           </div>

@@ -2,12 +2,16 @@ import { useState, useEffect } from 'react'
 import Layout from '@/components/Layout'
 import DataTable from '@/components/DataTable'
 import FormModal from '@/components/FormModal'
+import Toast from '@/components/Toast'
+import ConfirmModal from '@/components/ConfirmModal'
 
 export default function UsersPage() {
   const [items, setItems] = useState([])
   const [roles, setRoles] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
   const [editingItem, setEditingItem] = useState(null)
+  const [toast, setToast] = useState(null)
+  const [deleteConfirm, setDeleteConfirm] = useState(null)
 
   const fetchItems = async () => {
     const res = await fetch('/api/users')
@@ -22,12 +26,22 @@ export default function UsersPage() {
   useEffect(() => { fetchItems(); fetchRoles() }, [])
 
   const handleSubmit = async (data) => {
-    const url = editingItem ? `/api/users?id=${editingItem.id}` : '/api/users'
-    const method = editingItem ? 'PUT' : 'POST'
-    await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-    setModalOpen(false)
-    setEditingItem(null)
-    fetchItems()
+    try {
+      const url = editingItem ? `/api/users?id=${editingItem.id}` : '/api/users'
+      const method = editingItem ? 'PUT' : 'POST'
+      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: 'Request failed' }))
+        throw new Error(err.error || `HTTP ${res.status}`)
+      }
+      setToast({ message: editingItem ? 'User updated successfully' : 'User created successfully', type: 'success' })
+    } catch (err) {
+      setToast({ message: err.message, type: 'error' })
+    } finally {
+      setModalOpen(false)
+      setEditingItem(null)
+      fetchItems()
+    }
   }
 
   const handleEdit = (item) => {
@@ -36,9 +50,23 @@ export default function UsersPage() {
   }
 
   const handleDelete = async (item) => {
-    if (!confirm('Delete this user?')) return
-    await fetch(`/api/users?id=${item.id}`, { method: 'DELETE' })
-    fetchItems()
+    setDeleteConfirm(item)
+  }
+
+  const handleDeleteConfirm = async () => {
+    try {
+      const res = await fetch(`/api/users?id=${deleteConfirm.id}`, { method: 'DELETE' })
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: 'Delete failed' }))
+        throw new Error(err.error || `HTTP ${res.status}`)
+      }
+      setToast({ message: 'User deleted successfully', type: 'success' })
+    } catch (err) {
+      setToast({ message: err.message, type: 'error' })
+    } finally {
+      setDeleteConfirm(null)
+      fetchItems()
+    }
   }
 
   const roleOptions = roles.map(r => ({ value: r.id, label: r.name }))
@@ -64,20 +92,28 @@ export default function UsersPage() {
   ]
 
   const fields = [
-    { key: 'name', label: 'Name', type: 'text', required: true, placeholder: 'Enter full name' },
-    { key: 'email', label: 'Email', type: 'email', required: true, placeholder: 'email@example.com' },
-    { key: 'roleId', label: 'Role', type: 'select', options: roleOptions },
-    { key: 'status', label: 'Status', type: 'select', options: ['active', 'inactive'] },
+    { key: 'name', label: 'Name', type: 'text', required: true, placeholder: 'Enter full name', 'data-testid': 'name-input' },
+    { key: 'email', label: 'Email', type: 'email', required: true, placeholder: 'email@example.com', 'data-testid': 'email-input' },
+    { key: 'roleId', label: 'Role', type: 'select', options: roleOptions, 'data-testid': 'role-select' },
+    { key: 'status', label: 'Status', type: 'select', options: ['active', 'inactive'], 'data-testid': 'status-select' },
   ]
 
   return (
     <Layout>
+      <Toast data-testid={toast ? `${toast.type}-toast` : undefined} message={toast?.message} type={toast?.type || 'success'} onClose={() => setToast(null)} />
+      <ConfirmModal
+        open={!!deleteConfirm}
+        title="Delete User"
+        message={`Are you sure you want to delete "${deleteConfirm?.name}"? This action cannot be undone.`}
+        onConfirm={handleDeleteConfirm}
+        onCancel={() => setDeleteConfirm(null)}
+      />
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Users</h1>
-          <p className="text-sm text-gray-500 mt-1">Manage system users</p>
+          <h1 data-testid="page-title" className="text-2xl font-bold text-gray-900">Users</h1>
+          <p data-testid="page-description" className="text-sm text-gray-500 mt-1">Manage system users</p>
         </div>
-        <button className="btn-primary" onClick={() => { setEditingItem(null); setModalOpen(true) }}>
+        <button data-testid="add-user-button" className="btn-primary" onClick={() => { setEditingItem(null); setModalOpen(true) }}>
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
           </svg>

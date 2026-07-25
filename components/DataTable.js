@@ -1,6 +1,6 @@
 export default function DataTable({ columns, data, onEdit, onDelete }) {
   return (
-    <div className="card overflow-hidden">
+    <div data-testid="users-data-table" className="card overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
@@ -37,7 +37,7 @@ export default function DataTable({ columns, data, onEdit, onDelete }) {
               data.map((item) => (
                 <tr key={item.id} className="hover:bg-gray-50 transition-colors">
                   {columns.map((col) => (
-                    <td key={col.key} className="px-6 py-4 whitespace-nowrap">
+                    <td data-testid={`data-${col.key}`} key={col.key} className="px-6 py-4 whitespace-nowrap">
                       {col.render ? col.render(item[col.key], item) : (item[col.key] ?? '—')}
                     </td>
                   ))}
@@ -45,6 +45,7 @@ export default function DataTable({ columns, data, onEdit, onDelete }) {
                     <div className="flex items-center justify-end gap-2">
                       {onEdit && (
                         <button
+                          data-testid="edit-button"
                           onClick={() => onEdit(item)}
                           className="btn btn-sm btn-secondary"
                         >
@@ -56,6 +57,7 @@ export default function DataTable({ columns, data, onEdit, onDelete }) {
                       )}
                       {onDelete && (
                         <button
+                          data-testid="delete-button"
                           onClick={() => onDelete(item)}
                           className="btn btn-sm bg-red-50 text-red-600 hover:bg-red-100 border border-red-200"
                         >

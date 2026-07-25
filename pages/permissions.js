@@ -2,11 +2,15 @@ import { useState, useEffect } from 'react'
 import Layout from '@/components/Layout'
 import DataTable from '@/components/DataTable'
 import FormModal from '@/components/FormModal'
+import Toast from '@/components/Toast'
+import ConfirmModal from '@/components/ConfirmModal'
 
 export default function PermissionsPage() {
   const [items, setItems] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
   const [editingItem, setEditingItem] = useState(null)
+  const [successMessage, setSuccessMessage] = useState('')
+  const [deleteConfirm, setDeleteConfirm] = useState(null)
 
   const fetchItems = async () => {
     const res = await fetch('/api/permissions')
@@ -21,6 +25,7 @@ export default function PermissionsPage() {
     await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
     setModalOpen(false)
     setEditingItem(null)
+    setSuccessMessage(editingItem ? 'Permission updated successfully' : 'Permission created successfully')
     fetchItems()
   }
 
@@ -29,9 +34,14 @@ export default function PermissionsPage() {
     setModalOpen(true)
   }
 
-  const handleDelete = async (item) => {
-    if (!confirm('Delete this permission?')) return
-    await fetch(`/api/permissions?id=${item.id}`, { method: 'DELETE' })
+  const handleDelete = (item) => {
+    setDeleteConfirm(item)
+  }
+
+  const handleDeleteConfirm = async () => {
+    await fetch(`/api/permissions?id=${deleteConfirm.id}`, { method: 'DELETE' })
+    setDeleteConfirm(null)
+    setSuccessMessage('Permission deleted successfully')
     fetchItems()
   }
 
@@ -62,6 +72,14 @@ export default function PermissionsPage() {
 
   return (
     <Layout>
+      <Toast message={successMessage} onClose={() => setSuccessMessage('')} />
+      <ConfirmModal
+        open={!!deleteConfirm}
+        title="Delete Permission"
+        message={`Are you sure you want to delete "${deleteConfirm?.name}"? This action cannot be undone.`}
+        onConfirm={handleDeleteConfirm}
+        onCancel={() => setDeleteConfirm(null)}
+      />
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Permissions</h1>
