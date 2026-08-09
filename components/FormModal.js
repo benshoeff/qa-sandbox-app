@@ -64,6 +64,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
       case 'textarea':
         return (
           <textarea
+            data-testid="textarea-input"
             className="input min-h-[80px]"
             value={value}
             onChange={(e) => handleChange(field.key, e.target.value)}

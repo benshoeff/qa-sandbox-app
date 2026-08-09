@@ -57,7 +57,7 @@ export default function RolesPage() {
 
   return (
     <Layout>
-      <Toast message={successMessage} onClose={() => setSuccessMessage('')} />
+      <Toast data-testid={successMessage ? 'success-toast' : undefined} message={successMessage} onClose={() => setSuccessMessage('')} />
       <ConfirmModal
         open={!!deleteConfirm}
         title="Delete Role"
@@ -67,10 +67,10 @@ export default function RolesPage() {
       />
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Roles</h1>
-          <p className="text-sm text-gray-500 mt-1">Define user roles and access levels</p>
+          <h1 data-testid="page-title" className="text-2xl font-bold text-gray-900">Roles</h1>
+          <p data-testid="page-description" className="text-sm text-gray-500 mt-1">Define user roles and access levels</p>
         </div>
-        <button className="btn-primary" onClick={() => { setEditingItem(null); setModalOpen(true) }}>
+        <button data-testid="add-role-button" className="btn-primary" onClick={() => { setEditingItem(null); setModalOpen(true) }}>
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
           </svg>
