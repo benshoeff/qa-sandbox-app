@@ -77,6 +77,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
       case 'json':
         return (
           <textarea
+            data-testid={`${field.key}-input`}
             className="input min-h-[100px] font-mono text-xs"
             value={typeof value === 'string' ? value : JSON.stringify(value, null, 2)}
             onChange={(e) => handleChange(field.key, e.target.value)}
@@ -90,6 +91,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
         return (
           <input
             type="number"
+            data-testid={`${field.key}-input`}
             className="input"
             value={value}
             onChange={(e) => handleChange(field.key, e.target.value)}
@@ -103,6 +105,7 @@ export default function FormModal({ open, onClose, onSubmit, fields, initialData
         return (
           <input
             type="date"
+            data-testid={`${field.key}-input`}
             className="input"
             value={value ? value.split('T')[0] : ''}
             onChange={(e) => handleChange(field.key, e.target.value ? new Date(e.target.value).toISOString() : '')}

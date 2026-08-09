@@ -1,6 +1,6 @@
-export default function DataTable({ columns, data, onEdit, onDelete }) {
+export default function DataTable({ columns, data, onEdit, onDelete, entity }) {
   return (
-    <div data-testid="users-data-table" className="card overflow-hidden">
+    <div data-testid={`${entity}-data-table`} className="card overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>

@@ -4,6 +4,7 @@ import DataTable from '@/components/DataTable'
 import FormModal from '@/components/FormModal'
 import Toast from '@/components/Toast'
 import ConfirmModal from '@/components/ConfirmModal'
+import PageHeader from '@/components/PageHeader'
 
 export default function UsersPage() {
   const [items, setItems] = useState([])
@@ -92,10 +93,10 @@ export default function UsersPage() {
   ]
 
   const fields = [
-    { key: 'name', label: 'Name', type: 'text', required: true, placeholder: 'Enter full name', 'data-testid': 'name-input' },
-    { key: 'email', label: 'Email', type: 'email', required: true, placeholder: 'email@example.com', 'data-testid': 'email-input' },
-    { key: 'roleId', label: 'Role', type: 'select', options: roleOptions, 'data-testid': 'role-select' },
-    { key: 'status', label: 'Status', type: 'select', options: ['active', 'inactive'], 'data-testid': 'status-select' },
+    { key: 'name', label: 'Name', type: 'text', required: true, placeholder: 'Enter full name' },
+    { key: 'email', label: 'Email', type: 'email', required: true, placeholder: 'email@example.com' },
+    { key: 'roleId', label: 'Role', type: 'select', options: roleOptions },
+    { key: 'status', label: 'Status', type: 'select', options: ['active', 'inactive'] },
   ]
 
   return (
@@ -108,20 +109,14 @@ export default function UsersPage() {
         onConfirm={handleDeleteConfirm}
         onCancel={() => setDeleteConfirm(null)}
       />
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 data-testid="page-title" className="text-2xl font-bold text-gray-900">Users</h1>
-          <p data-testid="page-description" className="text-sm text-gray-500 mt-1">Manage system users</p>
-        </div>
-        <button data-testid="add-user-button" className="btn-primary" onClick={() => { setEditingItem(null); setModalOpen(true) }}>
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-          </svg>
-          Add User
-        </button>
-      </div>
+      <PageHeader
+        entity="users"
+        title="Users"
+        description="Manage system users"
+        onAdd={() => { setEditingItem(null); setModalOpen(true) }}
+      />
 
-      <DataTable columns={columns} data={items} onEdit={handleEdit} onDelete={handleDelete} />
+      <DataTable entity="users" columns={columns} data={items} onEdit={handleEdit} onDelete={handleDelete} />
 
       <FormModal
         open={modalOpen}
