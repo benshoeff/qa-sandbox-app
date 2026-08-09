@@ -4,6 +4,7 @@ import DataTable from '@/components/DataTable'
 import FormModal from '@/components/FormModal'
 import Toast from '@/components/Toast'
 import ConfirmModal from '@/components/ConfirmModal'
+import PageHeader from '@/components/PageHeader'
 
 export default function RolesPage() {
   const [items, setItems] = useState([])
@@ -65,20 +66,14 @@ export default function RolesPage() {
         onConfirm={handleDeleteConfirm}
         onCancel={() => setDeleteConfirm(null)}
       />
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 data-testid="page-title" className="text-2xl font-bold text-gray-900">Roles</h1>
-          <p data-testid="page-description" className="text-sm text-gray-500 mt-1">Define user roles and access levels</p>
-        </div>
-        <button data-testid="add-role-button" className="btn-primary" onClick={() => { setEditingItem(null); setModalOpen(true) }}>
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-          </svg>
-          Add Role
-        </button>
-      </div>
+      <PageHeader
+        entity="roles"
+        title="Roles"
+        description="Define user roles and access levels"
+        onAdd={() => { setEditingItem(null); setModalOpen(true) }}
+      />
 
-      <DataTable columns={columns} data={items} onEdit={handleEdit} onDelete={handleDelete} />
+      <DataTable entity="roles" columns={columns} data={items} onEdit={handleEdit} onDelete={handleDelete} />
 
       <FormModal
         open={modalOpen}

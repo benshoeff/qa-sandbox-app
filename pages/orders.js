@@ -4,6 +4,7 @@ import DataTable from '@/components/DataTable'
 import FormModal from '@/components/FormModal'
 import Toast from '@/components/Toast'
 import ConfirmModal from '@/components/ConfirmModal'
+import PageHeader from '@/components/PageHeader'
 
 export default function OrdersPage() {
   const [items, setItems] = useState([])
@@ -90,7 +91,7 @@ export default function OrdersPage() {
 
   return (
     <Layout>
-      <Toast message={successMessage} onClose={() => setSuccessMessage('')} />
+      <Toast data-testid={successMessage ? 'success-toast' : undefined} message={successMessage} onClose={() => setSuccessMessage('')} />
       <ConfirmModal
         open={!!deleteConfirm}
         title="Delete Order"
@@ -98,20 +99,14 @@ export default function OrdersPage() {
         onConfirm={handleDeleteConfirm}
         onCancel={() => setDeleteConfirm(null)}
       />
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Orders</h1>
-          <p className="text-sm text-gray-500 mt-1">Manage customer orders</p>
-        </div>
-        <button className="btn-primary" onClick={() => { setEditingItem(null); setModalOpen(true) }}>
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-          </svg>
-          Add Order
-        </button>
-      </div>
+      <PageHeader
+        entity="orders"
+        title="Orders"
+        description="Manage customer orders"
+        onAdd={() => { setEditingItem(null); setModalOpen(true) }}
+      />
 
-      <DataTable columns={columns} data={items} onEdit={handleEdit} onDelete={handleDelete} />
+      <DataTable entity="orders" columns={columns} data={items} onEdit={handleEdit} onDelete={handleDelete} />
 
       <FormModal
         open={modalOpen}
