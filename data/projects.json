@@ -1,0 +1,38 @@
+[
+  {
+    "id": "pj1",
+    "name": "Website Redesign",
+    "description": "Refresh the marketing website with a new design system.",
+    "ownerId": "u1",
+    "status": "in_progress",
+    "priority": "high",
+    "startDate": "2025-06-01T00:00:00.000Z",
+    "endDate": "2025-08-31T00:00:00.000Z",
+    "createdAt": "2025-05-25T00:00:00.000Z",
+    "updatedAt": "2025-06-10T00:00:00.000Z"
+  },
+  {
+    "id": "pj2",
+    "name": "Mobile App Launch",
+    "description": "Ship the iOS and Android apps to the app stores.",
+    "ownerId": "u2",
+    "status": "planned",
+    "priority": "medium",
+    "startDate": "2025-09-01T00:00:00.000Z",
+    "endDate": null,
+    "createdAt": "2025-06-10T00:00:00.000Z",
+    "updatedAt": "2025-06-10T00:00:00.000Z"
+  },
+  {
+    "id": "pj3",
+    "name": "API Migration",
+    "description": "Migrate legacy APIs to the new REST architecture.",
+    "ownerId": "u1",
+    "status": "completed",
+    "priority": "high",
+    "startDate": "2025-03-01T00:00:00.000Z",
+    "endDate": "2025-05-30T00:00:00.000Z",
+    "createdAt": "2025-02-20T00:00:00.000Z",
+    "updatedAt": "2025-05-30T00:00:00.000Z"
+  }
+]

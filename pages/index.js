@@ -11,6 +11,13 @@ const entities = [
   { name: 'Posts', href: '/posts', icon: '📝', color: 'bg-rose-50 text-rose-700 border-rose-200' },
   { name: 'Tasks', href: '/tasks', icon: '✅', color: 'bg-orange-50 text-orange-700 border-orange-200' },
   { name: 'Orders', href: '/orders', icon: '🛒', color: 'bg-indigo-50 text-indigo-700 border-indigo-200' },
+  { name: 'Customers', href: '/customers', icon: '🧑‍🤝‍🧑', color: 'bg-teal-50 text-teal-700 border-teal-200' },
+  { name: 'Invoices', href: '/invoices', icon: '🧾', color: 'bg-slate-50 text-slate-700 border-slate-200' },
+  { name: 'Tickets', href: '/tickets', icon: '🎫', color: 'bg-pink-50 text-pink-700 border-pink-200' },
+  { name: 'Projects', href: '/projects', icon: '📊', color: 'bg-lime-50 text-lime-700 border-lime-200' },
+  { name: 'Reviews', href: '/reviews', icon: '⭐', color: 'bg-yellow-50 text-yellow-700 border-yellow-200' },
+  { name: 'Employees', href: '/employees', icon: '👔', color: 'bg-fuchsia-50 text-fuchsia-700 border-fuchsia-200' },
+  { name: 'Departments', href: '/departments', icon: '🏢', color: 'bg-rose-50 text-rose-700 border-rose-200' },
 ]
 
 export default function Dashboard() {

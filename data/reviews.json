@@ -1,0 +1,32 @@
+[
+  {
+    "id": "rv1",
+    "productId": "pr1",
+    "author": "Elena Shapira",
+    "rating": 5,
+    "comment": "Great sound quality and battery life. Highly recommend!",
+    "status": "approved",
+    "createdAt": "2025-06-20T00:00:00.000Z",
+    "updatedAt": "2025-06-21T00:00:00.000Z"
+  },
+  {
+    "id": "rv2",
+    "productId": "pr2",
+    "author": "Frank Ben-David",
+    "rating": 3,
+    "comment": "Decent watch but the strap feels cheap.",
+    "status": "pending",
+    "createdAt": "2025-06-22T00:00:00.000Z",
+    "updatedAt": "2025-06-22T00:00:00.000Z"
+  },
+  {
+    "id": "rv3",
+    "productId": "pr1",
+    "author": "Gila Avrahami",
+    "rating": 1,
+    "comment": "Broke after two weeks of normal use.",
+    "status": "rejected",
+    "createdAt": "2025-06-23T00:00:00.000Z",
+    "updatedAt": "2025-06-23T00:00:00.000Z"
+  }
+]
