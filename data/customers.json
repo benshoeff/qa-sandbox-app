@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cu1",
+    "name": "Elena Shapira",
+    "email": "elena@example.com",
+    "phone": "+972-50-111-2222",
+    "city": "Tel Aviv",
+    "status": "active",
+    "createdAt": "2025-06-01T00:00:00.000Z",
+    "updatedAt": "2025-06-01T00:00:00.000Z"
+  },
+  {
+    "id": "cu2",
+    "name": "Frank Ben-David",
+    "email": "frank@example.com",
+    "phone": "+972-52-333-4444",
+    "city": "Jerusalem",
+    "status": "active",
+    "createdAt": "2025-06-05T00:00:00.000Z",
+    "updatedAt": "2025-06-05T00:00:00.000Z"
+  },
+  {
+    "id": "cu3",
+    "name": "Gila Avrahami",
+    "email": "gila@example.com",
+    "phone": "+972-54-555-6666",
+    "city": "Haifa",
+    "status": "inactive",
+    "createdAt": "2025-06-10T00:00:00.000Z",
+    "updatedAt": "2025-06-10T00:00:00.000Z"
+  }
+]

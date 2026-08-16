@@ -1,0 +1,26 @@
+[
+  {
+    "id": "d1",
+    "name": "Engineering",
+    "description": "Builds and maintains the platform",
+    "managerId": "u1",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "d2",
+    "name": "Quality Assurance",
+    "description": "Ensures product quality through testing",
+    "managerId": "u2",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "d3",
+    "name": "Product",
+    "description": "Owns the product roadmap and strategy",
+    "managerId": null,
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]

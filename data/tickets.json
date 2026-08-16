@@ -1,0 +1,35 @@
+[
+  {
+    "id": "tk1",
+    "subject": "Login page not loading",
+    "description": "The login page returns a 500 error after submitting credentials.",
+    "customerId": "cu1",
+    "assigneeId": "u1",
+    "priority": "high",
+    "status": "in_progress",
+    "createdAt": "2025-06-20T00:00:00.000Z",
+    "updatedAt": "2025-06-21T00:00:00.000Z"
+  },
+  {
+    "id": "tk2",
+    "subject": "Feature request: dark mode",
+    "description": "Would love to see a dark mode option in the settings.",
+    "customerId": "cu2",
+    "assigneeId": null,
+    "priority": "low",
+    "status": "open",
+    "createdAt": "2025-06-22T00:00:00.000Z",
+    "updatedAt": "2025-06-22T00:00:00.000Z"
+  },
+  {
+    "id": "tk3",
+    "subject": "Payment not received",
+    "description": "Customer reports a successful charge but no order confirmation email.",
+    "customerId": "cu3",
+    "assigneeId": "u2",
+    "priority": "critical",
+    "status": "resolved",
+    "createdAt": "2025-06-23T00:00:00.000Z",
+    "updatedAt": "2025-06-24T00:00:00.000Z"
+  }
+]

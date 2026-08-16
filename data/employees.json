@@ -1,0 +1,38 @@
+[
+  {
+    "id": "em1",
+    "name": "Alice Cohen",
+    "email": "alice@example.com",
+    "departmentId": "d1",
+    "position": "Frontend Developer",
+    "salary": 120000,
+    "hireDate": "2024-03-01T00:00:00.000Z",
+    "status": "active",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "em2",
+    "name": "Bob Levy",
+    "email": "bob@example.com",
+    "departmentId": "d2",
+    "position": "QA Engineer",
+    "salary": 95000,
+    "hireDate": "2024-06-15T00:00:00.000Z",
+    "status": "active",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "em3",
+    "name": "Carol Mizrahi",
+    "email": "carol@example.com",
+    "departmentId": "d3",
+    "position": "Product Manager",
+    "salary": 140000,
+    "hireDate": "2023-11-01T00:00:00.000Z",
+    "status": "on_leave",
+    "createdAt": "2025-01-01T00:00:00.000Z",
+    "updatedAt": "2025-01-01T00:00:00.000Z"
+  }
+]
